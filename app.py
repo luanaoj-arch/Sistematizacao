@@ -51,3 +51,28 @@ st.write("Mediana:", resultado_mediana)
 st.write("Moda:", resultado_moda)
 st.write("Amplitude:", resultado_amplitude)
 st.write("Desvio padrão amostral:", resultado_desvio)
+
+st.write("Desvio padrão amostral:", resultado_desvio)
+
+# Tabela de frequência
+
+st.write("## Tabela de frequência")
+
+classes = pd.cut(
+    dados[variavel].dropna(),
+    bins=10
+)
+
+frequencia = classes.value_counts().sort_index()
+
+tabela_frequencia = frequencia.reset_index()
+
+tabela_frequencia.columns = [
+    "Classe",
+    "Frequência"
+]
+
+st.dataframe(
+    tabela_frequencia,
+    hide_index=True
+)
