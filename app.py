@@ -255,16 +255,20 @@ quantidade_amostras = st.slider(
     step=100
 )
 
+# Utilizando dados  do dataset
+
+populacao_tlc = dados["Age"].dropna().to_numpy()
+
 medias_amostrais = []
 
 for i in range(quantidade_amostras):
-    amostra = np.random.normal(
-        loc=50,
-        scale=10,
-        size=tamanho_amostra
+    amostra = np.random.choice(
+        populacao_tlc,
+        size=tamanho_amostra,
+        replace=True
     )
 
-    medias_amostrais.append(np.mean(amostra))
+medias_amostrais.append(np.mean(amostra))
 
 fig_tlc, ax_tlc = plt.subplots()
 
@@ -278,3 +282,32 @@ ax_tlc.set_xlabel("Médias das amostras")
 ax_tlc.set_ylabel("Frequência")
 
 st.pyplot(fig_tlc)
+# Interpretação do Teorema do Limite Central
+
+st.write("## Interpretação do TLC")
+
+media_das_medias = np.mean(medias_amostrais)
+desvio_das_medias = np.std(medias_amostrais, ddof=1)
+
+st.write(
+    f"A média das médias amostrais foi "
+    f"{media_das_medias:.2f}."
+)
+
+st.write(
+    f"O desvio padrão das médias amostrais foi "
+    f"{desvio_das_medias:.2f}."
+)
+
+st.info(
+    "O Teorema do Limite Central afirma que, sob condições "
+    "adequadas, a distribuição das médias amostrais tende "
+    "a se aproximar de uma distribuição normal conforme "
+    "o tamanho das amostras aumenta."
+)
+
+st.write(
+    "Ao aumentar o tamanho da amostra, a variabilidade "
+    "das médias tende a diminuir, fazendo com que elas "
+    "se concentrem ao redor da média populacional."
+)
