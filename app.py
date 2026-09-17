@@ -7,7 +7,8 @@ from minhastats import (
     mediana,
     moda,
     amplitude,
-    desvio_padrao_amostral
+    desvio_padrao_amostral,
+    quartis
 )
 
 st.title("Laboratório Estatístico Interativo")
@@ -91,3 +92,34 @@ ax.set_xlabel(variavel)
 ax.set_ylabel("Frequência")
 
 st.pyplot(fig)
+
+# Detecção de outliers usando o método IQR
+
+st.write("## Detecção de outliers (IQR)")
+
+q1, q2, q3 = quartis(valores)
+
+iqr = q3 - q1
+
+limite_inferior = q1 - 1.5 * iqr
+limite_superior = q3 + 1.5 * iqr
+
+outliers = [
+    valor for valor in valores
+    if valor < limite_inferior or valor > limite_superior
+]
+
+st.write("Primeiro quartil (Q1):", q1)
+st.write("Mediana (Q2):", q2)
+st.write("Terceiro quartil (Q3):", q3)
+st.write("Intervalo interquartil (IQR):", iqr)
+
+st.write("Limite inferior:", limite_inferior)
+st.write("Limite superior:", limite_superior)
+
+st.write("Quantidade de outliers:", len(outliers))
+
+if len(outliers) > 0:
+    st.write("Alguns valores identificados:", outliers[:10])
+else:
+    st.write("Não foram encontrados outliers.")
