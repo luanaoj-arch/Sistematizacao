@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 from minhastats import (
     media,
@@ -160,4 +161,43 @@ st.write(
 st.write(
     f"Foram identificados {len(outliers)} possíveis outliers "
     "pelo método do intervalo interquartil (IQR)."
+)
+
+# Módulo 3 - Simulação de Monte Carlo
+# Lei dos Grandes Números
+
+st.write("## Módulo 3 - Lei dos Grandes Números")
+
+st.write(
+    "Simulação de lançamentos de uma moeda para observar "
+    "a aproximação da proporção de caras a 50%."
+)
+
+quantidade_lancamentos = st.slider(
+    "Quantidade de lançamentos:",
+    min_value=10,
+    max_value=10000,
+    value=1000,
+    step=10
+)
+
+lancamentos = np.random.choice(
+    ["Cara", "Coroa"],
+    size=quantidade_lancamentos
+)
+
+quantidade_caras = np.sum(lancamentos == "Cara")
+
+proporcao_caras = quantidade_caras / quantidade_lancamentos
+
+st.write("Quantidade de caras:", quantidade_caras)
+
+st.write(
+    "Proporção de caras:",
+    f"{proporcao_caras:.2%}"
+)
+
+st.write(
+    "A proporção esperada de caras em uma moeda equilibrada "
+    "é aproximadamente 50%."
 )
