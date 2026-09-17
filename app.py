@@ -15,3 +15,13 @@ st.write("Quantidade de registros:", len(dados))
 st.write("Dados do arquivo:")
 
 st.dataframe(dados)
+
+st.dataframe(dados)
+st.write("## Escolha uma variável para analisar")
+
+variavel = st.selectbox(
+    "Selecione uma variável:",
+    ["Age", "Rating", "Recommended IND", "Positive Feedback Count"]
+)
+
+st.write("Você escolheu:", variavel)
