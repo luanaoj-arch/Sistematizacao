@@ -257,7 +257,10 @@ quantidade_amostras = st.slider(
 
 # Utilizando dados  do dataset
 
-populacao_tlc = dados["Age"].dropna().to_numpy()
+populacao_tlc = pd.to_numeric(
+    dados["Age"],
+    errors="coerce"
+).dropna().to_numpy()
 
 medias_amostrais = []
 
@@ -287,7 +290,10 @@ st.pyplot(fig_tlc)
 st.write("## Interpretação do TLC")
 
 media_das_medias = np.mean(medias_amostrais)
-desvio_das_medias = np.std(medias_amostrais, ddof=1)
+desvio_das_medias = np.std(
+    medias_amostrais,
+    ddof=0
+)
 
 st.write(
     f"A média das médias amostrais foi "
