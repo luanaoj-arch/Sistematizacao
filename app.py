@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from minhastats import (
     media,
@@ -76,3 +77,17 @@ st.dataframe(
     tabela_frequencia,
     hide_index=True
 )
+
+# Gráfico da variável escolhida
+
+st.write("## Gráfico de distribuição")
+
+fig, ax = plt.subplots()
+
+ax.hist(valores, bins=10)
+
+ax.set_title(f"Distribuição de {variavel}")
+ax.set_xlabel(variavel)
+ax.set_ylabel("Frequência")
+
+st.pyplot(fig)
