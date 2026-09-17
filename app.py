@@ -229,3 +229,52 @@ ax_lgn.set_ylabel("Proporção acumulada de caras")
 ax_lgn.legend()
 
 st.pyplot(fig_lgn)
+
+# Teorema do Limite Central
+
+st.write("## Teorema do Limite Central")
+
+st.write(
+    "Vamos observar a distribuição das médias de várias amostras "
+    "retiradas de uma população."
+)
+
+tamanho_amostra = st.slider(
+    "Tamanho de cada amostra:",
+    min_value=5,
+    max_value=100,
+    value=30,
+    step=5
+)
+
+quantidade_amostras = st.slider(
+    "Quantidade de amostras:",
+    min_value=100,
+    max_value=2000,
+    value=1000,
+    step=100
+)
+
+medias_amostrais = []
+
+for i in range(quantidade_amostras):
+    amostra = np.random.normal(
+        loc=50,
+        scale=10,
+        size=tamanho_amostra
+    )
+
+    medias_amostrais.append(np.mean(amostra))
+
+fig_tlc, ax_tlc = plt.subplots()
+
+ax_tlc.hist(
+    medias_amostrais,
+    bins=30
+)
+
+ax_tlc.set_title("Distribuição das Médias Amostrais")
+ax_tlc.set_xlabel("Médias das amostras")
+ax_tlc.set_ylabel("Frequência")
+
+st.pyplot(fig_tlc)
