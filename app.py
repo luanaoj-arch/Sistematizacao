@@ -123,3 +123,41 @@ if len(outliers) > 0:
     st.write("Alguns valores identificados:", outliers[:10])
 else:
     st.write("Não foram encontrados outliers.")
+
+    # Interpretação dos resultados
+
+st.write("## Interpretação dos resultados")
+
+if resultado_media > resultado_mediana:
+    st.info(
+        "A média é maior que a mediana, indicando que alguns valores "
+        "mais altos podem estar influenciando a média."
+    )
+
+elif resultado_media < resultado_mediana:
+    st.info(
+        "A média é menor que a mediana, indicando que alguns valores "
+        "mais baixos podem estar influenciando a média."
+    )
+
+else:
+    st.info(
+        "A média e a mediana são iguais, indicando maior equilíbrio "
+        "entre os valores analisados."
+    )
+
+st.write(
+    f"A variável analisada foi {variavel}. "
+    f"A média encontrada foi {resultado_media:.2f}, "
+    f"enquanto a mediana foi {resultado_mediana:.2f}."
+)
+
+st.write(
+    f"O desvio padrão amostral foi {resultado_desvio:.2f}, "
+    "representando a dispersão dos valores em relação à média."
+)
+
+st.write(
+    f"Foram identificados {len(outliers)} possíveis outliers "
+    "pelo método do intervalo interquartil (IQR)."
+)
