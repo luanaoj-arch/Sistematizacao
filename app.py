@@ -201,3 +201,31 @@ st.write(
     "A proporção esperada de caras em uma moeda equilibrada "
     "é aproximadamente 50%."
 )
+
+# Gráfico da Lei dos Grandes Números
+
+st.write("## Evolução da proporção de caras")
+
+resultados_caras = (lancamentos == "Cara").astype(int)
+
+proporcao_acumulada = np.cumsum(resultados_caras) / np.arange(
+    1, quantidade_lancamentos + 1
+)
+
+fig_lgn, ax_lgn = plt.subplots()
+
+ax_lgn.plot(proporcao_acumulada)
+
+ax_lgn.axhline(
+    y=0.5,
+    linestyle="--",
+    label="Valor esperado: 50%"
+)
+
+ax_lgn.set_title("Lei dos Grandes Números")
+ax_lgn.set_xlabel("Quantidade de lançamentos")
+ax_lgn.set_ylabel("Proporção acumulada de caras")
+
+ax_lgn.legend()
+
+st.pyplot(fig_lgn)
