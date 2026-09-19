@@ -499,3 +499,45 @@ variavel_y = st.selectbox(
 
 st.write("Variável X:", variavel_x)
 st.write("Variável Y:", variavel_y)
+
+# Preparando os dados para o gráfico
+
+dados_regressao = dados[
+    [variavel_x, variavel_y]
+].copy()
+
+dados_regressao[variavel_x] = pd.to_numeric(
+    dados_regressao[variavel_x],
+    errors="coerce"
+)
+
+dados_regressao[variavel_y] = pd.to_numeric(
+    dados_regressao[variavel_y],
+    errors="coerce"
+)
+
+dados_regressao = dados_regressao.dropna()
+
+valores_x = dados_regressao[variavel_x].tolist()
+valores_y = dados_regressao[variavel_y].tolist()
+
+# Diagrama de dispersão
+
+st.write("## Diagrama de dispersão")
+
+fig_dispersao, ax_dispersao = plt.subplots()
+
+ax_dispersao.scatter(
+    valores_x,
+    valores_y,
+    alpha=0.4
+)
+
+ax_dispersao.set_title(
+    f"Relação entre {variavel_x} e {variavel_y}"
+)
+
+ax_dispersao.set_xlabel(variavel_x)
+ax_dispersao.set_ylabel(variavel_y)
+
+st.pyplot(fig_dispersao)
