@@ -712,3 +712,24 @@ equacao = (
 )
 
 st.write(equacao)
+
+# Predição interativa
+
+st.write("## Predição interativa")
+
+valor_x_predicao = st.number_input(
+    f"Digite um valor de {variavel_x}:",
+    min_value=float(min(valores_x)),
+    max_value=float(max(valores_x)),
+    value=float(media(valores_x))
+)
+
+valor_y_predito = (
+    coeficiente_linear
+    + coeficiente_angular * valor_x_predicao
+)
+
+st.write(
+    f"Valor estimado de {variavel_y}:",
+    f"{valor_y_predito:.4f}"
+)
