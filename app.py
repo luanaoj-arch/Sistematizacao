@@ -11,7 +11,8 @@ from minhastats import (
     amplitude,
     desvio_padrao_amostral,
     quartis,
-     correlacao_pearson
+     correlacao_pearson,
+      regressao_linear
 )
 
 st.title("Laboratório Estatístico Interativo")
@@ -587,3 +588,69 @@ else:
             "A correlação é próxima de zero, indicando pouca "
             "relação linear entre as variáveis."
         )
+        # Regressão linear simples
+
+st.write("## Regressão linear simples")
+
+if variavel_x == variavel_y:
+
+    st.warning(
+        "Escolha duas variáveis diferentes para calcular a regressão."
+    )
+
+else:
+
+    coeficiente_linear, coeficiente_angular = regressao_linear(
+        valores_x,
+        valores_y
+    )
+
+    st.write(
+        "Coeficiente linear (intercepto):",
+        f"{coeficiente_linear:.4f}"
+    )
+
+    st.write(
+        "Coeficiente angular (inclinação):",
+        f"{coeficiente_angular:.4f}"
+    )
+
+    # Valores previstos pela reta
+
+    valores_x_ordenados = np.sort(
+        np.array(valores_x)
+    )
+
+    valores_y_previstos = (
+        coeficiente_linear
+        + coeficiente_angular * valores_x_ordenados
+    )
+
+    # Gráfico com a reta de regressão
+
+    fig_regressao, ax_regressao = plt.subplots()
+
+    ax_regressao.scatter(
+        valores_x,
+        valores_y,
+        alpha=0.3,
+        label="Dados reais"
+    )
+
+    ax_regressao.plot(
+        valores_x_ordenados,
+        valores_y_previstos,
+        linewidth=2,
+        label="Reta de regressão"
+    )
+
+    ax_regressao.set_title(
+        f"Regressão linear: {variavel_x} e {variavel_y}"
+    )
+
+    ax_regressao.set_xlabel(variavel_x)
+    ax_regressao.set_ylabel(variavel_y)
+
+    ax_regressao.legend()
+
+    st.pyplot(fig_regressao)
