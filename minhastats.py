@@ -315,3 +315,4 @@ def regressao_linear(x, y):
     )
 
     return coeficiente_linear, coeficiente_angular
+

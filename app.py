@@ -11,8 +11,8 @@ from minhastats import (
     amplitude,
     desvio_padrao_amostral,
     quartis,
-     correlacao_pearson,
-      regressao_linear
+    correlacao_pearson,
+    regressao_linear
 )
 
 st.title("Laboratório Estatístico Interativo")
