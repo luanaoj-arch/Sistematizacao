@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 from minhastats import (
     media,
@@ -400,4 +401,75 @@ st.write(
     "Quanto mais o formato dos dados se aproximar da curva, "
     "maior será a semelhança visual com a distribuição normal. "
     "Essa comparação é apenas descritiva."
+)# Distribuição de Poisson
+
+st.write("## Distribuição de Poisson")
+
+valores_poisson = pd.to_numeric(
+    dados["Positive Feedback Count"],
+    errors="coerce"
+).dropna().to_numpy()
+
+lambda_poisson = np.mean(valores_poisson)
+
+maior_valor = int(np.percentile(valores_poisson, 99))
+
+eixo_poisson = np.arange(0, maior_valor + 1)
+
+probabilidades_poisson = []
+
+for valor in eixo_poisson:
+    probabilidade = math.exp(
+        -lambda_poisson
+    ) * (lambda_poisson ** valor) / math.factorial(valor)
+
+    probabilidades_poisson.append(probabilidade)
+
+fig_poisson, ax_poisson = plt.subplots()
+
+limite_superior = maior_valor + 0.5
+
+valores_grafico = valores_poisson[
+    valores_poisson <= maior_valor
+]
+
+ax_poisson.hist(
+    valores_grafico,
+    bins=np.arange(-0.5, maior_valor + 1.5, 1),
+    density=True,
+    alpha=0.6,
+    label="Dados reais"
+)
+
+ax_poisson.plot(
+    eixo_poisson,
+    probabilidades_poisson,
+    marker="o",
+    linestyle="-",
+    label="Poisson teórica"
+)
+
+ax_poisson.set_title(
+    "Dados reais e Distribuição de Poisson"
+)
+
+ax_poisson.set_xlabel("Quantidade de feedbacks positivos")
+ax_poisson.set_ylabel("Probabilidade / Densidade")
+
+ax_poisson.legend()
+
+st.pyplot(fig_poisson)
+
+st.write(
+    f"Parâmetro estimado da distribuição (lambda): "
+    f"{lambda_poisson:.2f}"
+)st.write("### Discussão do ajuste")
+
+st.info(
+    "A qualidade do ajuste pode ser avaliada visualmente "
+    "comparando o formato do histograma com a distribuição "
+    "de Poisson. Quanto mais próximas forem as alturas e "
+    "o formato das distribuições, maior será a semelhança "
+    "visual. A comparação é descritiva e não representa "
+    "um teste estatístico formal de ajuste."
 )
