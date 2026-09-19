@@ -296,3 +296,22 @@ def correlacao_pearson(x, y):
         )
 
     return soma_xy / denominador
+
+    def regressao_linear(x, y):
+    media_x = media(x)
+    media_y = media(y)
+
+    numerador = 0
+    denominador = 0
+
+    for i in range(len(x)):
+        numerador += (x[i] - media_x) * (y[i] - media_y)
+        denominador += (x[i] - media_x) ** 2
+
+    coeficiente_angular = numerador / denominador
+
+    coeficiente_linear = (
+        media_y - coeficiente_angular * media_x
+    )
+
+    return coeficiente_linear, coeficiente_angular

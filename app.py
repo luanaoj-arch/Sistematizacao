@@ -468,10 +468,6 @@ st.write(
 st.write("### Discussão do ajuste")
 
 st.info(
-    "A qualidade do ajuste pode ser avaliada visualmente "
-    "comparando o formato do histograma com a distribuição "
-    "de Poisson. Quanto mais próximas forem as alturas e "
-    "o formato das distribuições, maior será a semelhança "
-    "visual. A comparação é descritiva e não representa "
-    "um teste estatístico formal de ajuste."
+    "Ao comparar o histograma com a distribuição de Poisson,é possivel observar visualmente se os dados reais apresentam um comportamento parecido com a curva teórica. Quanto mais semelhantes forem os formatos, melhor será a aproximação. Essa análise é apenas visual e descritiva, não sendo um teste estatístico formal."
+    
 )
