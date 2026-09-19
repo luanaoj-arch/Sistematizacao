@@ -10,7 +10,8 @@ from minhastats import (
     moda,
     amplitude,
     desvio_padrao_amostral,
-    quartis
+    quartis,
+     correlacao_pearson
 )
 
 st.title("Laboratório Estatístico Interativo")
@@ -541,3 +542,48 @@ ax_dispersao.set_xlabel(variavel_x)
 ax_dispersao.set_ylabel(variavel_y)
 
 st.pyplot(fig_dispersao)
+
+# Coeficiente de correlação de Pearson
+
+st.write("## Coeficiente de correlação de Pearson")
+
+if variavel_x == variavel_y:
+
+    st.warning(
+        "Escolha duas variáveis diferentes para calcular a correlação."
+    )
+
+else:
+
+    resultado_correlacao = correlacao_pearson(
+        valores_x,
+        valores_y
+    )
+
+    st.write(
+        "Coeficiente de correlação:",
+        f"{resultado_correlacao:.4f}"
+    )
+
+    # Interpretação do resultado
+
+    if resultado_correlacao > 0:
+
+        st.write(
+            "A correlação é positiva, indicando que as variáveis "
+            "tendem a aumentar juntas."
+        )
+
+    elif resultado_correlacao < 0:
+
+        st.write(
+            "A correlação é negativa, indicando que quando uma "
+            "variável aumenta, a outra tende a diminuir."
+        )
+
+    else:
+
+        st.write(
+            "A correlação é próxima de zero, indicando pouca "
+            "relação linear entre as variáveis."
+        )
