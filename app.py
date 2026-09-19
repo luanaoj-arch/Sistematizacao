@@ -768,3 +768,66 @@ st.info(
     "Mesmo que duas variáveis apresentem alguma relação, isso não quer dizer que uma delas esteja causando a outra."
     "Por isso, é necessário ter cuidado ao interpretar os resultados."
 )
+
+# Módulo 6 - 3 achados/descobertas
+
+st.write("## Módulo 6 - 3 Achados/Descobertas")
+
+st.write(
+    "Nesta etapa, apresento três observações "
+    "identificadas durante a análise do dataset."
+)
+
+# Achado 1 - Avaliações
+
+media_rating = media(
+    dados["Rating"].dropna().tolist()
+)
+
+st.write("### Descoberta 1 - Avaliação das roupas")
+
+st.write(
+    f"A média das avaliações das roupas é "
+    f"{media_rating:.2f}."
+)
+
+st.write(
+    "Esse resultado ajuda a entender como as clientes "
+    "avaliaram os produtos analisados."
+)
+# Achado 2 - Idade
+
+media_idade = media(
+    dados["Age"].dropna().tolist()
+)
+
+st.write("### Descoberta 2 - Idade das clientes")
+
+st.write(
+    f"A idade média das clientes no dataset é "
+    f"{media_idade:.2f} anos."
+)
+
+st.write(
+    "Essa informação permite conhecer melhor "
+    "o perfil etário das participantes da pesquisa."
+)
+# Achado 3 - Recomendação
+
+media_recomendacao = media(
+    dados["Recommended IND"].dropna().tolist()
+)
+
+percentual_recomendacao = media_recomendacao * 100
+
+st.write("### Descoberta 3 - Recomendação dos produtos")
+
+st.write(
+    f"Aproximadamente {percentual_recomendacao:.2f}% "
+    "dos registros indicam recomendação do produto."
+)
+
+st.write(
+    "Esse percentual mostra a proporção de registros "
+    "em que o produto foi recomendado."
+)
