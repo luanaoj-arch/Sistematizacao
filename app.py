@@ -733,3 +733,38 @@ st.write(
     f"Valor estimado de {variavel_y}:",
     f"{valor_y_predito:.4f}"
 )
+
+# Interpretação dos coeficientes
+
+st.write("## Interpretação dos resultados")
+
+if coeficiente_angular > 0:
+
+    st.write(
+        f"O coeficiente angular é positivo "
+        f"({coeficiente_angular:.4f}). "
+        f"Isso indica uma tendência de aumento de "
+        f"{variavel_y} quando {variavel_x} aumenta."
+    )
+
+elif coeficiente_angular < 0:
+
+    st.write(
+        f"O coeficiente angular é negativo "
+        f"({coeficiente_angular:.4f}). "
+        f"Isso indica uma tendência de diminuição de "
+        f"{variavel_y} quando {variavel_x} aumenta."
+    )
+
+else:
+
+    st.write(
+        "O coeficiente angular é zero, indicando "
+        "que a reta não apresenta inclinação."
+    )
+
+st.info(
+    "É importante lembrar que correlação não significa causalidade. "
+    "Mesmo que duas variáveis apresentem alguma relação, isso não quer dizer que uma delas esteja causando a outra."
+    "Por isso, é necessário ter cuidado ao interpretar os resultados."
+)
