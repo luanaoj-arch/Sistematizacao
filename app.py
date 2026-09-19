@@ -285,6 +285,13 @@ ax_tlc.set_xlabel("Médias das amostras")
 ax_tlc.set_ylabel("Frequência")
 
 st.pyplot(fig_tlc)
+
+st.write("Menor média amostral:", min(medias_amostrais))
+st.write("Maior média amostral:", max(medias_amostrais))
+st.write(
+    "Desvio padrão completo:",
+    np.std(medias_amostrais, ddof=0)
+)
 # Interpretação do Teorema do Limite Central
 
 st.write("## Interpretação do TLC")
@@ -317,3 +324,54 @@ st.write(
     "das médias tende a diminuir, fazendo com que elas "
     "se concentrem ao redor da média populacional."
 )
+
+# Módulo 4 - Distribuição Normal Teórica
+
+st.write("## Módulo 4 - Distribuição Normal")
+
+valores_normal = pd.to_numeric(
+    dados["Age"],
+    errors="coerce"
+).dropna().to_numpy()
+
+media_normal = np.mean(valores_normal)
+desvio_normal = np.std(valores_normal, ddof=0)
+
+eixo_x = np.linspace(
+    min(valores_normal),
+    max(valores_normal),
+    200
+)
+
+densidade_normal = (
+    1 / (desvio_normal * np.sqrt(2 * np.pi))
+) * np.exp(
+    -0.5 * ((eixo_x - media_normal) / desvio_normal) ** 2
+)
+
+fig_normal, ax_normal = plt.subplots()
+
+ax_normal.hist(
+    valores_normal,
+    bins=30,
+    density=True,
+    alpha=0.6,
+    label="Dados reais"
+)
+
+ax_normal.plot(
+    eixo_x,
+    densidade_normal,
+    label="Distribuição Normal"
+)
+
+ax_normal.set_title(
+    "Dados reais e Distribuição Normal"
+)
+
+ax_normal.set_xlabel("Idade")
+ax_normal.set_ylabel("Densidade")
+
+ax_normal.legend()
+
+st.pyplot(fig_normal)
