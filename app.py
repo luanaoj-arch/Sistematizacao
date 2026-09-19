@@ -654,3 +654,61 @@ else:
     ax_regressao.legend()
 
     st.pyplot(fig_regressao)
+
+    # Coeficiente de determinação R²
+
+st.write("## Coeficiente de determinação (R²)")
+
+valores_y_ajustados = (
+    coeficiente_linear
+    + coeficiente_angular * np.array(valores_x)
+)
+
+media_y_regressao = media(valores_y)
+
+soma_residuos = 0
+soma_total = 0
+
+for i in range(len(valores_y)):
+
+    soma_residuos += (
+        valores_y[i] - valores_y_ajustados[i]
+    ) ** 2
+
+    soma_total += (
+        valores_y[i] - media_y_regressao
+    ) ** 2
+
+if soma_total != 0:
+
+    resultado_r2 = 1 - (
+        soma_residuos / soma_total
+    )
+
+    st.write(
+        "R²:",
+        f"{resultado_r2:.4f}"
+    )
+
+else:
+
+    st.warning(
+        "Não foi possível calcular o R² para esses dados."
+    )
+   
+
+# Equação da reta de regressão
+
+st.write("## Equação da reta")
+
+sinal = "+"
+
+if coeficiente_angular < 0:
+    sinal = "-"
+
+equacao = (
+    f"Ŷ = {coeficiente_linear:.4f} "
+    f"{sinal} {abs(coeficiente_angular):.4f} × X"
+)
+
+st.write(equacao)
