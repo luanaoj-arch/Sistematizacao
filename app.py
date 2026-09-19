@@ -375,3 +375,29 @@ ax_normal.set_ylabel("Densidade")
 ax_normal.legend()
 
 st.pyplot(fig_normal)
+
+# Interpretação da Distribuição Normal
+
+st.write("## Interpretação da Distribuição Normal")
+
+st.write(
+    f"A média das idades foi {media_normal:.2f}."
+)
+
+st.write(
+    f"O desvio padrão populacional das idades foi "
+    f"{desvio_normal:.2f}."
+)
+
+st.info(
+    "O histograma representa a distribuição das idades "
+    "observadas no dataset. A curva representa uma "
+    "distribuição normal teórica calculada usando a "
+    "média e o desvio padrão dos dados."
+)
+
+st.write(
+    "Quanto mais o formato dos dados se aproximar da curva, "
+    "maior será a semelhança visual com a distribuição normal. "
+    "Essa comparação é apenas descritiva."
+)
