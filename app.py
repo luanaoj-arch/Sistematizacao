@@ -471,3 +471,31 @@ st.info(
     "Ao comparar o histograma com a distribuição de Poisson,é possivel observar visualmente se os dados reais apresentam um comportamento parecido com a curva teórica. Quanto mais semelhantes forem os formatos, melhor será a aproximação. Essa análise é apenas visual e descritiva, não sendo um teste estatístico formal."
     
 )
+# Módulo 5 - Correlação e Regressão Linear
+
+st.write("## Módulo 5 - Correlação e Regressão Linear")
+
+st.write("Escolha duas variáveis numéricas para analisar.")
+
+variaveis_numericas = [
+    "Age",
+    "Rating",
+    "Recommended IND",
+    "Positive Feedback Count"
+]
+
+variavel_x = st.selectbox(
+    "Selecione a variável X:",
+    variaveis_numericas,
+    key="variavel_x"
+)
+
+variavel_y = st.selectbox(
+    "Selecione a variável Y:",
+    variaveis_numericas,
+    index=1,
+    key="variavel_y"
+)
+
+st.write("Variável X:", variavel_x)
+st.write("Variável Y:", variavel_y)

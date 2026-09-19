@@ -297,7 +297,7 @@ def correlacao_pearson(x, y):
 
     return soma_xy / denominador
 
-    def regressao_linear(x, y):
+def regressao_linear(x, y):
     media_x = media(x)
     media_y = media(y)
 
