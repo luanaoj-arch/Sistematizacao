@@ -463,7 +463,9 @@ st.pyplot(fig_poisson)
 st.write(
     f"Parâmetro estimado da distribuição (lambda): "
     f"{lambda_poisson:.2f}"
-)st.write("### Discussão do ajuste")
+)
+
+st.write("### Discussão do ajuste")
 
 st.info(
     "A qualidade do ajuste pode ser avaliada visualmente "
