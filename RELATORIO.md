@@ -49,8 +49,6 @@ https://www.kaggle.com/datasets/nicapotato/womens-ecommerce-clothing-reviews?res
 
 ## 3. Núcleo estatístico próprio
 
-## 3. Núcleo estatístico próprio
-
 Uma das partes do projeto foi desenvolver uma biblioteca estatística própria, chamada `minhastats.py`.
 
 A ideia foi criar as funções utilizando Python e operações matemáticas, sem depender diretamente de funções prontas de estatística para realizar os cálculos principais.
@@ -125,7 +123,7 @@ As funções foram organizadas no arquivo `minhastats.py`, separado da interface
 Também procurei manter os cálculos organizados em funções independentes, facilitando a realização dos testes e a reutilização dos códigos em diferentes partes do projeto.
 
 ## 4. Validação dos resultados
-## 4. Validação dos resultados
+
 
 Para verificar se os cálculos da biblioteca própria estavam corretos, criei o arquivo `testes_stats.py`, utilizando testes automatizados com o pytest.
 
@@ -157,7 +155,6 @@ Os testes foram utilizados para verificar as funções estatísticas implementad
 
 A validação ajudou a conferir os cálculos e a aumentar a confiança nos resultados utilizados na aplicação. Os mesmos se encontra nas pastas de testes.
 
-## 5. Desenvolvimento da aplicação
 
 ## 5. Desenvolvimento da aplicação
 
@@ -173,9 +170,6 @@ Foram incluídos cálculos de média, mediana, moda, amplitude e desvio padrão,
 
 Também foram apresentados gráficos e tabelas para facilitar a interpretação dos dados.
 
-**Captura de tela do Módulo 2:**
-
-*(Inserir imagem da aplicação funcionando)*
 
 ### 5.2 Módulo 3 - Simulação
 
@@ -185,9 +179,6 @@ A aplicação permite observar a proporção acumulada dos resultados de lançam
 
 Também foi desenvolvida uma simulação relacionada ao Teorema Central do Limite, utilizando amostras retiradas do dataset.
 
-**Captura de tela do Módulo 3:**
-
-*(Inserir imagem da aplicação funcionando)*
 
 ### 5.3 Módulo 4 - Distribuições de Probabilidade
 
@@ -197,9 +188,7 @@ Foi apresentada uma distribuição normal utilizando a variável idade e uma dis
 
 Os gráficos permitem observar visualmente as diferenças e semelhanças entre os dados reais e as distribuições teóricas.
 
-**Captura de tela do Módulo 4:**
 
-*(Inserir imagem da aplicação funcionando)*
 
 ### 5.4 Módulo 5 - Correlação e Regressão Linear
 
@@ -211,9 +200,6 @@ A aplicação apresenta uma reta de regressão linear simples, seus coeficientes
 
 É importante destacar que a existência de correlação entre duas variáveis não significa que uma delas cause a outra.
 
-**Captura de tela do Módulo 5:**
-
-*(Inserir imagem da aplicação funcionando)*
 
 ### 5.5 Módulo 6 - Relatório de Descobertas
 
@@ -221,7 +207,6 @@ Neste módulo, foram organizadas algumas observações estatísticas obtidas dur
 
 As descobertas foram baseadas nos resultados calculados pela aplicação e serão detalhadas na próxima seção.
 
-**Captura de tela do Módulo 6:**
 
 ![alt text](image.png)
 ![alt text](image-1.png)
