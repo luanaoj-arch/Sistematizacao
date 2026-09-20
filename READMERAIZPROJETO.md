@@ -1,7 +1,7 @@
 Aluna: Luana Oliveira de Jesus
 Matricula: 72650514
 
-Descrição do Projeto: 
+Descrição do Projeto Individual: 
 
 O projeto Laboratório Estatístico Interativo foi desenvolvido em Python e Streamlit.
 
